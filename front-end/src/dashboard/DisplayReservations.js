@@ -1,6 +1,6 @@
 import { formatAsTime } from "../utils/date-time";
 import { Link } from "react-router-dom";
-import CancelButton from "../Reservations/CancelButton";
+import CancelButton from "../reservations/CancelButton";
 
 function DisplayReservations({ reservations, isToday }) {
   
