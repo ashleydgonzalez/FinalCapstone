@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { listReservations } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
-import { formatAsDate, previous, next, today } from "../utils/date-time";
+import {
+  formatAsDate,
+  previous,
+  next,
+  today,
+} from "../utils/date-time";
 import useQuery from "../utils/useQuery";
-import DisplayReservations from "./displayReservations";
-import TableList from "./tableList";
+import DisplayReservations from "./DisplayReservations";
+import TableList from "./TableList";
 
 /**
  * Defines the dashboard page.
@@ -54,6 +59,8 @@ function Dashboard({ date }) {
     );
   });
 
+
+
   return (
     <main>
       <h1>Dashboard</h1>
@@ -79,7 +86,7 @@ function Dashboard({ date }) {
           Forward
         </button>
       </div>
-      <DisplayReservations reservations={result} isToday={isToday} />
+      <DisplayReservations reservations={result} isToday={isToday}/>
       {!reservations.length && <h3>No reservations on this date</h3>}
       <TableList />
     </main>

@@ -1,36 +1,37 @@
 import { formatAsTime } from "../utils/date-time";
 import { Link } from "react-router-dom";
-import CancelButton from "../reservations/CancelButton";
+import CancelButton from "../Reservations/CancelButton";
 
 function DisplayReservations({ reservations, isToday }) {
+  
   function addDashes(phoneNumber) {
     phoneNumber = phoneNumber.replace(/[^0-9.]/g, "");
     const dashedPhoneNumber =
-      phoneNumber.slice(0, 3) +
-      "-" +
-      phoneNumber.slice(3, 6) +
-      "-" +
-      phoneNumber.slice(6);
+    phoneNumber.slice(0, 3) +
+    "-" +
+    phoneNumber.slice(3, 6) +
+    "-" +
+    phoneNumber.slice(6);
     return dashedPhoneNumber;
   }
-
+  
   let tableData;
   if (reservations) {
     tableData = reservations.map((result) => {
-      let badge;
-      switch (result.status) {
-        case "seated":
-          badge = "badge badge-primary";
-          break;
-        case "finished":
-          badge = "badge badge-secondary";
-          break;
-        case "cancelled":
-          badge = "badge badge-danger";
-          break;
-        default:
-          badge = "badge badge-success";
-      }
+        let badge;
+        switch (result.status) {
+            case "seated":
+                badge = "badge badge-primary";
+                break;
+            case "finished":
+                badge = "badge badge-secondary";
+                break;
+            case "cancelled":
+                badge = "badge badge-danger";
+                break;
+            default:
+                badge = "badge badge-success";
+        }
 
       return (
         <tr key={result.reservation_id}>
@@ -44,7 +45,7 @@ function DisplayReservations({ reservations, isToday }) {
           </td>
           <td>{result.people}</td>
           <td>
-            {result.status === "booked" ? (
+            {result.status === "booked"  ? (
               <a
                 className="btn btn-primary"
                 href={`/reservations/${result.reservation_id}/seat`}
