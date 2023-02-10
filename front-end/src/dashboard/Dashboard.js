@@ -4,8 +4,8 @@ import { listReservations } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import { formatAsDate, previous, next, today } from "../utils/date-time";
 import useQuery from "../utils/useQuery";
-import DisplayReservations from "./DisplayReservations";
-import TableList from "./TableList";
+import DisplayReservations from "./displayReservations";
+import TableList from "./tableList";
 
 /**
  * Defines the dashboard page.
