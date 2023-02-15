@@ -1,16 +1,19 @@
+/**
+ * Express API has properties error handler.
+ */
 function hasProperties(...properties) {
-    return function (res, req, next) {
-      const { data = {} } = res.body;
+    return function (req, res, next) {
+      const { data = {} } = req.body;
   
       try {
         properties.forEach((property) => {
-          const value = data[property];
-          if (!value) {
+          if (!data[property]) {
             const error = new Error(`A '${property}' property is required.`);
             error.status = 400;
             throw error;
           }
         });
+        res.locals.data = data;
         next();
       } catch (error) {
         next(error);
@@ -18,4 +21,4 @@ function hasProperties(...properties) {
     };
   }
   
-  module.exports = hasProperties
+  module.exports = hasProperties;
